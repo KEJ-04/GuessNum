@@ -2,45 +2,54 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main() {
+void playGame() 
+{
+    int secretNumber, guess, attempts = 0;
+
     srand(time(NULL));
-    int target, guess, attempts;
-    char playAgain;
+    secretNumber = rand() % 100 + 1;
 
-    do 
+    printf("게임 규칙 : 1부터 100까지의 숫자 중 하나를 랜덤으로 선택합니다.\n");
+    printf("당신은 그 숫자를 맞추는 게임을 진행하게 됩니다.\n");
+
+    // 게임 루프
+    while (1) 
     {
-        target = rand() % 100 + 1;
-        attempts = 0;
+        printf("숫자를 입력하세요 : ");
+        scanf_s("%d", &guess);
+        attempts++;
 
-        printf("숫자가 생성되었습니다. 1부터 100까지의 숫자를 맞춰보세요 !\n");
-
-        do 
+        if (guess > secretNumber) {
+            printf("입력한 숫자가 너무 큽니다.\n");
+        }
+        else if (guess < secretNumber) {
+            printf("입력한 숫자가 너무 작습니다.\n");
+        }
+        else 
         {
-            printf("숫자를 입력하세요 : ");
-            scanf_s("%d", &guess);
-            attempts++;
+            printf("축하합니다! 숫자를 맞추셨습니다.\n 게임이 종료됩니다.\n");
+            break;
+        }
+    }
 
-            if (guess > target) 
-            {
-                printf("더 작은 숫자입니다.\n");
-            }
-            else if (guess < target) 
-            {
-                printf("더 큰 숫자입니다.\n");
-            }
-            else 
-            {
-                printf("축하합니다 ! %d번 만에 숫자를 맞추셨습니다.\n", attempts);
-            }
-        } while (guess != target);
+    printf("게임을 종료했습니다. 총 시도 횟수 : %d번\n", attempts);
+}
+
+int main() {
+    char choice;
+    
+    while(1)
+    {
+        playGame();
 
         printf("게임을 다시 하시겠습니까 ? (Y/N) : ");
-        scanf_s(" %c", &playAgain);  // 공백을 넣어 엔터 문자 제거
-    } while (playAgain == 'Y' || playAgain == 'y');
+        scanf_s(" %c", &choice);
 
-    printf("축하합니다 !\n");
-    printf("게임을 종료합니다.\n");
-    printf("플레이 해주셔서 감사합니다.\n");
-
+        if (choice == 'Y' || choice == 'y');
+        {
+            printf("게임을 종료합니다.\n");
+            break;
+        }
+    }
     return 0;
 }
