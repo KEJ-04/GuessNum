@@ -38,8 +38,9 @@ int main() {
         scanf_s(" %c", &playAgain);  // 공백을 넣어 엔터 문자 제거
     } while (playAgain == 'Y' || playAgain == 'y');
 
+    printf("축하합니다 !\n");
     printf("게임을 종료합니다.\n");
-    printf("감사합니다 !\n");
+    printf("플레이 해주셔서 감사합니다.\n");
 
     return 0;
 }
