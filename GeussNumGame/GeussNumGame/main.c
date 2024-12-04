@@ -1,6 +1,10 @@
 ﻿#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
-    printf("숫자 맞추기 게임에 오신 것을 환영합니다!\n");
+    srand(time(NULL));
+    int target = rand() % 100 + 1;
+    printf("숫자가 생성되었습니다. 맞춰보세요!\n");
     return 0;
 }
