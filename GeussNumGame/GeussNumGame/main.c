@@ -43,6 +43,7 @@ void playGame()
 int main() {
     char choice;
     
+    //게임을 다시할지 물어보는 루프
     while(1)
     {
         playGame();
