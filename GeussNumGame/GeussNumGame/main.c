@@ -39,6 +39,7 @@ int main() {
     } while (playAgain == 'Y' || playAgain == 'y');
 
     printf("게임을 종료합니다.\n");
+    printf("감사합니다 !\n");
 
     return 0;
 }
