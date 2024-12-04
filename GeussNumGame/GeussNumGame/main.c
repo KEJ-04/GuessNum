@@ -4,38 +4,40 @@
 
 void playGame() 
 {
-    int secretNumber, guess, attempts = 0;
-
-    /*
-     char difficulty;
+    int lower, upper, secretNumber, guess, attempts = 0;
+    char difficulty;
 
     // 난이도 선택
     printf("게임 난이도를 선택하세요 (E: 쉬움, M: 보통, H: 어려움): ");
-    scanf(" %c", &difficulty);
+    scanf_s(" %c", &difficulty);
 
     // 난이도에 따라 숫자 범위 설정
     if (difficulty == 'E' || difficulty == 'e') {
         lower = 1;
         upper = 50;
-    } else if (difficulty == 'M' || difficulty == 'm') {
+    }
+    else if (difficulty == 'M' || difficulty == 'm') {
         lower = 1;
         upper = 100;
-    } else if (difficulty == 'H' || difficulty == 'h') {
+    }
+    else if (difficulty == 'H' || difficulty == 'h') {
         lower = 1;
         upper = 200;
-    } else {
+    }
+    else {
         printf("잘못된 입력입니다. 기본 난이도(보통)로 설정합니다.\n");
         lower = 1;
         upper = 100;
     }
-    */
+
 
     srand(time(NULL));
-    secretNumber = rand() % 100 + 1;
+    secretNumber = rand() % (upper - lower + 1) + lower;
 
     printf("게임 규칙 : 1부터 100까지의 숫자 중 하나를 랜덤으로 선택합니다.\n");
-    printf("당신은 그 숫자를 맞추는 게임을 진행하게 됩니다.\n");
+    printf("당신은 그 숫자를 맞추는 게임을 진행하게 됩니다.\n\n");
 
+    printf("게임을 시작합니다! %d부터 %d 사이의 숫자를 맞추세요.\n", lower, upper);
     // 게임 루프
     while (1) 
     {
