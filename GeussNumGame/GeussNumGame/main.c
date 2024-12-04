@@ -6,6 +6,10 @@ void playGame()
 {
     int lower, upper, secretNumber, guess, attempts = 0;
     char difficulty;
+    time_t startTime, endTime;
+    double totalTime;
+
+    time(&startTime);
 
     // 난이도 선택
     printf("게임 난이도를 선택하세요 (E: 쉬움, M: 보통, H: 어려움): ");
@@ -50,6 +54,15 @@ void playGame()
         }
         attempts++;
 
+        if (attempts > 50) {
+            if (guess < secretNumber) {
+                printf("힌트: 숫자는 더 큽니다!\n");
+            }
+            else {
+                printf("힌트: 숫자는 더 작습니다!\n");
+            }
+        }
+
         if (guess > secretNumber) {
             printf("입력한 숫자가 너무 큽니다.\n");
         }
@@ -64,6 +77,23 @@ void playGame()
     }
 
     printf("게임을 종료했습니다. 총 시도 횟수 : %d번\n", attempts);
+
+    // 게임 종료 시간 기록
+    time(&endTime);
+    totalTime = difftime(endTime, startTime);
+
+    printf("게임을 종료했습니다. 총 시도 횟수 : %d번\n", attempts);
+    printf("게임 총 소요 시간: %.2f초\n", totalTime);
+
+    // 통계 저장 (간단한 예시로 텍스트 파일에 기록)
+    FILE* file = fopen("game_stats.txt", "a");
+    if (file != NULL) {
+        fprintf(file, "난이도: %c, 시도 횟수: %d, 소요 시간: %.2f초\n", difficulty, attempts, totalTime);
+        fclose(file);
+    }
+    else {
+        printf("통계 저장에 실패했습니다.\n");
+    }
 }
 
 int main() {
