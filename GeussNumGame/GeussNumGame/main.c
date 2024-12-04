@@ -50,11 +50,21 @@ int main() {
         printf("게임을 다시 하시겠습니까 ? (Y/N) : ");
         scanf_s(" %c", &choice);
 
-        if (choice == 'Y' || choice == 'y');
+        if (choice == 'Y' || choice == 'y') 
+        {
+            printf("게임을 재시작합니다.\n");
+            continue;
+        }
+        else if (choice == 'N' || choice == 'n') 
         {
             printf("게임을 종료합니다.\n");
             break;
         }
+        else 
+        {
+            printf("잘못된 입력입니다. Y 또는 N을 입력해 주세요.\n");
+        }
     }
+
     return 0;
 }
