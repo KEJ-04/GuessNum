@@ -16,7 +16,12 @@ void playGame()
     while (1) 
     {
         printf("숫자를 입력하세요 : ");
-        scanf_s("%d", &guess);
+        if (scanf("%d", &guess) != 1) 
+        {
+            printf("잘못된 입력입니다. 숫자만 입력해 주세요.\n");
+            while (getchar() != '\n');  // 입력 버퍼 비우기
+            continue;  // 잘못된 입력 시 다시 시도
+        }
         attempts++;
 
         if (guess > secretNumber) {
